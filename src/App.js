@@ -1,7 +1,8 @@
-import React, {useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
-import { getTrips } from './actions/flykids';
+import { getTrips, addTraveler } from './actions/flykids';
 import { connect } from 'react-redux';
+import SignUp from './components/signUp';
 
 function App(props) {
 	
@@ -13,6 +14,7 @@ function App(props) {
     <div className="App">
    		<h1>FLY KIDS</h1>
    		<h2>We make flying with kids easy</h2>
+   		<SignUp addTraveler={props.addTraveler} />
     </div>
   );
 }
@@ -25,7 +27,8 @@ function mapStateToProps(state){
 }
 
 const mapDispatchToProps = {
-	getTrips
+	getTrips,
+	addTraveler
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

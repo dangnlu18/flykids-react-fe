@@ -3,6 +3,15 @@ import { FETCH_TRIPS, FETCH_TRIPS_SUCCESS, FETCH_TRIPS_ERROR } from '../actions/
 
 const initialState = {
 	trips:[],
+	users: {
+		first_name:'',
+		last_name:'',
+		email:'',
+		phone:'',
+		password:'',
+		is_admin: 0
+
+	},
 	isLoading: false,
 	error: null
 }
