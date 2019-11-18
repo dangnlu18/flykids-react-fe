@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../utils/api';
+
 
 export default function SignUp(props){
 	const [ newUser, setNewUser ] = useState({
@@ -29,7 +29,7 @@ export default function SignUp(props){
 			<input type='text' name="last_name" value={newUser.last_name} placeholder='Last Name' onChange={handleChange}/><br/>
 			<input type='text' name="email" value={newUser.email} placeholder='email' onChange={handleChange}/><br/>
 			<input type='text' name="phone" value={newUser.phone} placeholder='Phone Number' onChange={handleChange}/><br/>
-			<input type='text' name="password" value={newUser.password} placeholder='password' onChange={handleChange}/><br/>
+			<input type='password' name="password" value={newUser.password} placeholder='password' onChange={handleChange}/><br/>
 			<button> Sign Up</button>
 		</form>
 		)

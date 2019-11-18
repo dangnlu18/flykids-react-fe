@@ -3,6 +3,7 @@ import './App.css';
 import { getTrips, addTraveler } from './actions/flykids';
 import { connect } from 'react-redux';
 import SignUp from './components/signUp';
+import SignIn from './components/signin'
 
 function App(props) {
 	
@@ -15,6 +16,7 @@ function App(props) {
    		<h1>FLY KIDS</h1>
    		<h2>We make flying with kids easy</h2>
    		<SignUp user={props.user} addTraveler={props.addTraveler} />
+   		<SignIn />
     </div>
   );
 }

@@ -1,10 +1,19 @@
 import axios from 'axios';
 
-export default function api(){
-	return axios.create({
-		baseURL: "https://kids-fly-backend.herokuapp.com",
-		headers:{
-			Authorization: localStorage.getItem('token'),
-		},
-	})
+const config = {
+	baseURL: "http://webptct.herokuapp.com",
 }
+
+const token = localStorage.getItem('token');
+
+if(token){
+	config.headers = {
+			Authorization: token,
+		}
+}
+
+export default function api(){
+
+	return axios.create(config)
+		}
+	
