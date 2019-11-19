@@ -2,7 +2,13 @@ import { FETCH_TRIPS, FETCH_TRIPS_SUCCESS, FETCH_TRIPS_ERROR } from '../actions/
 
 
 const initialState = {
-	trips:[],
+	trips:[{
+		airport:'',
+		airline:'',
+		departure_time:'',
+		kids:0,
+		is_arriving:0
+	}],
 	user: {
 		first_name:'',
 		last_name:'',

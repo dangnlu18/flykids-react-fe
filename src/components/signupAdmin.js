@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 
-
-export default function SignUp(props){
+export default function SignUpAdmin(props){
 	const history = useHistory();
-
 	const [ newUser, setNewUser ] = useState({
 		first_name: "",
 		last_name: "",
 		email: "",
 		phone: "",
 		password: "",
-		is_admin: 0
+		is_admin: 1,
+		airport: ''
 	})
 
 	const handleChange = e => {
@@ -31,12 +30,14 @@ export default function SignUp(props){
 	return(
 		<div className='container' >
 			<form onSubmit={handleSubmit}>
-				<h1>New Traveler Sign Up</h1>
+				<h1>Admin Sign Up</h1>
 				<input type='text' name="first_name" value={newUser.first_name} placeholder='first name' onChange={handleChange}/> <br/>
 				<input type='text' name="last_name" value={newUser.last_name} placeholder='last name' onChange={handleChange}/><br/>
 				<input type='text' name="email" value={newUser.email} placeholder='email' onChange={handleChange}/><br/>
 				<input type='text' name="phone" value={newUser.phone} placeholder='phone number' onChange={handleChange}/><br/>
+				<input type='text' name="airport" value={newUser.airport} placeholder='airport' onChange={handleChange}/><br/>
 				<input type='password' name="password" value={newUser.password} placeholder='password' onChange={handleChange}/><br/><br/>
+
 				<button> Sign Up</button>
 			</form>
 		</div>

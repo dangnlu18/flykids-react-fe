@@ -30,7 +30,7 @@ export function addTraveler(item){
 
 			})
 			.catch((err)=>{
-				dispatch({type: FETCH_TRIPS_ERROR, payload: err.response.data})
+				dispatch({type: FETCH_TRIPS_ERROR, payload: err.response})
 			})
 
 

@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import api from '../utils/api';
-
+import { useHistory } from 'react-router-dom';
 
 
 
 export default function SignIn(props){
+	const history = useHistory();
 	const [ user, setUser ] = useState({
 		"email": "",
 		"password": "",
@@ -17,49 +18,18 @@ export default function SignIn(props){
 			})
 	}
 
-	const handleSubmit = async e =>{
+	const handleSubmit = e =>{
 		e.preventDefault();
 		console.log(user)
 		api().post('/login', user)
-			.then((resp)=>console.log(resp))
+			.then((resp)=>{
+			localStorage.setItem('token', resp.data.token)
+			history.push('/trips')
+
+
+		})
 			.catch((err)=>console.log(err.response))
 		}
-		// const URL ="http://kids-fly-backend.herokuapp.com/login"
-
-		// const response = await fetch(URL, {
-		//   method: 'GET', // *GET, POST, PUT, DELETE, etc.
-		//   headers: {
-		//     'Content-Type': 'application/json'
-		//     // 'Content-Type': 'application/x-www-form-urlencoded',
-		//   },
-		//   body: JSON.stringify(user)}
-		//   const result = await response.json()
-		//   console.log(result)
-
-		// let xhr = new XMLHttpRequest();
-		// xhr.open("GET", URL)
-		// xhr.send(user)
-
-		// xhr.onload = function() {
-		//   if (xhr.status != 200) { // analyze HTTP status of the response
-		//     console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
-		//   } else { // show the result
-		//     console.log(`Done, got ${xhr.response} bytes`); // responseText is the server
-		//   }
-		// };
-
-		// xhr.onprogress = function(event) {
-		//   if (event.lengthComputable) {
-		//     console.log(`Received ${event.loaded} of ${event.total} bytes`);
-		//   } else {
-		//     console.log(`Received ${event.loaded} bytes`); // no Content-Length
-		//   }
-
-		// };
-
-		// xhr.onerror = function() {
-		//   console.log("Request failed");
-		// 	}}
 
 	return(
 		<form onSubmit={handleSubmit}>
