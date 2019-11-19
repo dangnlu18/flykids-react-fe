@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
+
 export default function SignUp(props){
 	const history = useHistory();
 
@@ -28,6 +29,11 @@ export default function SignUp(props){
 		history.push('/signin')
 	}
 
+	const handleClick = e =>{
+		e.preventDefault();
+		history.push('/')
+	}
+
 	return(
 		<div className='container' >
 			<form onSubmit={handleSubmit}>
@@ -38,7 +44,10 @@ export default function SignUp(props){
 				<input type='text' name="phone" value={newUser.phone} placeholder='phone number' onChange={handleChange}/><br/>
 				<input type='password' name="password" value={newUser.password} placeholder='password' onChange={handleChange}/><br/><br/>
 				<button> Sign Up</button>
+				<button className='start-over' onClick={handleClick}> Start Over </button>
+
 			</form>
+			
 		</div>
 		)
 }
