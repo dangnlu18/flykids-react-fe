@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import TripContainer from "./TripContainer";
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default function TripList(props) {
+function TripList(props) {
 	const history = useHistory();
-    const [trips ] = useState([{name:'dang', description: 'flight to texas', id:1},{name:'rob', description: 'flight to hawaii', id:2},{name:'ava', description: 'flight to portland', id:3}]);
+    const [trips ] = useState(props.trips)
 
     useEffect(()=>{
     	props.getTrips();
@@ -31,3 +32,11 @@ export default function TripList(props) {
         </div>
     )
 }
+
+function mapStateToProps(state){
+	return{
+		trips:state.trips,
+	}
+}
+
+export default connect(mapStateToProps)(TripList);

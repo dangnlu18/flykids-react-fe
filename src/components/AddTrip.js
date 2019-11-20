@@ -8,7 +8,7 @@ export default function AddTrip(props){
 	    airline: "",
 	    departure_time: '',
 	    kids: '',
-	    is_arriving: ''             
+	    is_arriving:''             
 	})
 
 	const handleChange = e =>{
@@ -20,9 +20,9 @@ export default function AddTrip(props){
 
 	const handleSubmit = e =>{
 		e.preventDefault();
-		props.addTrip();
+		props.addTrip(newTrip);
 		setTimeout(()=>{
-			history.push('/trips', 3000)
+			history.push('/trips', 5000)
 		})
 	}
 
