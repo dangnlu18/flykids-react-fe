@@ -1,52 +1,60 @@
-import React, { useEffect } from 'react';
-import './App.css';
-import { getTrips, addTraveler } from './actions/flykids';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import SignUp from './components/signUp';
+import React, { useEffect } from 'react'
+import './App.css'
+import Navigation from './components/Navigation'
+
+import { getTrips, addTraveler } from './actions/flykids'
+import { connect } from 'react-redux'
+import { Route } from 'react-router-dom'
+import SignUp from './components/signUp'
 import SignUpAdmin from './components/signupAdmin'
-import SignIn from './components/signin';
-import Navbar from './components/navBar';
+import SignIn from './components/signin'
+import Navbar from './components/navBar'
 import TripList from './components/TripsList'
 
 function App(props) {
-	
-	useEffect(()=>{
-		props.getTrips()
-	}, [])
+  useEffect(() => {
+    props.getTrips()
+  }, [])
 
   return (
-    <div className="App">
-    	<h1>FLY KIDS</h1>
-    	<h2>We make flying with kids easy</h2>
+    <div className='App'>
+      <Navigation />
+      <h1>FLY KIDS</h1>
+      <h2>We make flying with kids easy</h2>
 
-
-		<Route exact path ='/' component ={Navbar} />
-   		<Route exact path ="/traveler-signup" render={()=><SignUp user={props.user} addTraveler={props.addTraveler}/>} />
-   		<Route exact path ="/admin-signup" render={()=><SignUpAdmin user={props.user} addTraveler={props.addTraveler}/>} />
-   		<Route exact path ="/trips" component={TripList} />
-   		<Route exact path ="/signin" component={SignIn} />
-   		
-
-
+      <Route exact path='/' component={Navbar} />
+      <Route
+        exact
+        path='/traveler-signup'
+        render={() => (
+          <SignUp user={props.user} addTraveler={props.addTraveler} />
+        )}
+      />
+      <Route
+        exact
+        path='/admin-signup'
+        render={() => (
+          <SignUpAdmin user={props.user} addTraveler={props.addTraveler} />
+        )}
+      />
+      <Route exact path='/trips' component={TripList} />
+      <Route exact path='/signin' component={SignIn} />
     </div>
-  );
+  )
 }
 
-
-function mapStateToProps(state){
-	return{
-		trips:state.trips,
-		user: state.user,
-	}
+function mapStateToProps(state) {
+  return {
+    trips: state.trips,
+    user: state.user
+  }
 }
 
 const mapDispatchToProps = {
-	getTrips,
-	addTraveler
+  getTrips,
+  addTraveler
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 // <SignUp user={props.user} addTraveler={props.addTraveler} />
