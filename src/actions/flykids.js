@@ -19,6 +19,19 @@ export function getTrips(){
 	}
 }
 
+export function addTrip(trip){
+	return(dispatch) => {
+		dispatch({type: FETCH_TRIPS})
+
+		api().post('/trips', trip)
+			.then((resp)=>{
+				console.log(resp)
+				dispatch({type:FETCH_TRIPS_SUCCESS, payload: resp})
+			})
+			.catch((err)=>console.log(err))
+	}
+}
+
 
 export function addTraveler(item){
 	return (dispatch)=>{

@@ -1,14 +1,15 @@
-import React from "react";
+import React from 'react'
 
 const TripContainer = props => {
-    return(
-        <div>
-            <div>
-                <p>name: {props.trip.name}</p>
-                <p>Description: {props.trip.description}</p>
-            </div>
-        </div>
-    );
-};
+  console.log(props)
+  return (
+    <div>
+      <div>
+        <p>name: {props.trip.airport}</p>
+        <p>Description: {props.trip.airline}</p>
+      </div>
+    </div>
+  )
+}
 
-export default TripContainer;
+export default TripContainer
