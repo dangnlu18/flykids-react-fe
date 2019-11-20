@@ -1,9 +1,6 @@
-import React from 'react';
-import {Link, Route} from 'react-router-dom';
-import Styled from 'styled-components';
-import TripList from "./TripList";
-import LogInForm from "./LogInForm"
-
+import React from 'react'
+import { Link, Route } from 'react-router-dom'
+import Styled from 'styled-components'
 
 const Nav = Styled.div`
 display: flex;
@@ -12,8 +9,7 @@ justify-content: space-evenly;
 text-align: center;
 align-items: center;
 background-color: #932F6D;
-`;
-
+`
 
 const Navigation = () => {
   return (
@@ -21,17 +17,18 @@ const Navigation = () => {
       <Nav>
         <h1>KidsFly!</h1>
         <div>
-          <Link to="/trips" className="atags">Trips</Link>
+          <Link to='/trips' className='atags'>
+            Trips
+          </Link>
         </div>
         <div>
-          <Link to="/login" className="atags">Log In</Link>
+          <Link to='/login' className='atags'>
+            Log In
+          </Link>
         </div>
       </Nav>
-    
-      <Route path="/trips" component={TripList} />
-      <Route path="/login" component={LogInForm} />
     </div>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

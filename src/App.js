@@ -9,7 +9,7 @@ import SignUp from './components/signUp'
 import SignUpAdmin from './components/signupAdmin'
 import SignIn from './components/signin'
 import Navbar from './components/navBar'
-import TripList from './components/TripsList'
+import TripsList from './components/TripsList'
 
 function App(props) {
   useEffect(() => {
@@ -21,7 +21,6 @@ function App(props) {
       <Navigation />
       <h1>FLY KIDS</h1>
       <h2>We make flying with kids easy</h2>
-
       <Route exact path='/' component={Navbar} />
       <Route
         exact
@@ -37,7 +36,7 @@ function App(props) {
           <SignUpAdmin user={props.user} addTraveler={props.addTraveler} />
         )}
       />
-      <Route exact path='/trips' component={TripList} />
+      <Route exact path='/trips' component={TripsList} />
       <Route exact path='/signin' component={SignIn} />
     </div>
   )
