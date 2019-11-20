@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import api from "../utils/api";
 import TripContainer from "./TripContainer";
+import { useHistory } from 'react-router-dom';
 
-export default function TripList() {
-    const [trips, setTrips] = useState([]);
+export default function TripList(props) {
+	const history = useHistory();
+    const [trips ] = useState([{name:'dang', description: 'flight to texas', id:1},{name:'rob', description: 'flight to hawaii', id:2},{name:'ava', description: 'flight to portland', id:3}]);
 
-    useEffect(() => {
-        api().get("/trips")
-            .then(res => {
-                console.log(res);
-                setTrips(res.data);
-            })
-            .catch(err => {
-                console.log(err)
-            });
-    }, []);
+    useEffect(()=>{
+    	props.getTrips();
+
+    },[])
+
+	const handleClick = e =>{
+		e.preventDefault();
+		history.push('/add-trip')
+	}
 
     return (
         <div>
@@ -27,6 +27,7 @@ export default function TripList() {
                     />
                 )
             })}
+            <button onClick={handleClick}>Add New Trip</button>
         </div>
     )
 }

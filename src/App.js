@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import { getTrips, addTraveler } from './actions/flykids';
+import { getTrips, addTraveler, addTrip } from './actions/flykids';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import SignUp from './components/signUp';
 import SignUpAdmin from './components/signupAdmin'
 import SignIn from './components/signin';
 import Navbar from './components/navBar';
-import TripList from './components/TripsList'
+import TripList from './components/TripsList';
+import AddTrip from './components/AddTrip';
 
 function App(props) {
-	
-	useEffect(()=>{
-		props.getTrips()
-	}, [])
 
   return (
     <div className="App">
@@ -24,8 +21,9 @@ function App(props) {
 		<Route exact path ='/' component ={Navbar} />
    		<Route exact path ="/traveler-signup" render={()=><SignUp user={props.user} addTraveler={props.addTraveler}/>} />
    		<Route exact path ="/admin-signup" render={()=><SignUpAdmin user={props.user} addTraveler={props.addTraveler}/>} />
-   		<Route exact path ="/trips" component={TripList} />
+   		<Route exact path ="/trips" render={()=><TripList getTrips={props.getTrips} />} />
    		<Route exact path ="/signin" component={SignIn} />
+   		<Route exact path ="/add-trip" render={()=><AddTrip addTrip={props.addTrip} />} />
    		
 
 
@@ -43,7 +41,8 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = {
 	getTrips,
-	addTraveler
+	addTraveler,
+	addTrip
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
