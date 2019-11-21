@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const config = {
-	baseURL: "http://webptct.herokuapp.com",
+	baseURL: "https://webptct.herokuapp.com",
 }
 
 const token = localStorage.getItem('token');
