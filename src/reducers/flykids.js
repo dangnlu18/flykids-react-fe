@@ -3,6 +3,15 @@ import { FETCH_TRIPS, FETCH_TRIPS_SUCCESS, FETCH_TRIPS_ERROR } from '../actions/
 
 const initialState = {
 	trips:[],
+	user: {
+		first_name:'',
+		last_name:'',
+		email:'',
+		phone:'',
+		password:'',
+		is_admin: 0
+
+	},
 	isLoading: false,
 	error: null
 }
@@ -17,7 +26,7 @@ export function reducer(state=initialState, action){
 		case FETCH_TRIPS_SUCCESS:
 			return{
 				...state,
-				trips: action.payload,
+				trips: [...action.payload],
 				isLoading: false
 			}
 		case FETCH_TRIPS_ERROR:
@@ -26,5 +35,7 @@ export function reducer(state=initialState, action){
 				error: action.payload,
 				isLoading: false
 			}
+		default:
+			return state
 	}
 }
