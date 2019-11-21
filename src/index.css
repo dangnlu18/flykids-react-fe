@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F6F2FF;
 }
 
 code {
@@ -64,3 +65,20 @@ button:hover{
 .start-over{
 	background-color: #420039;
 }
+
+.trips{
+	margin: 10px;
+	display: flex;
+	flex-flow: row;
+	border: 1px solid black;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.trip-detail{
+	display: flex;
+	flex-direction: column
+}
+
+
+

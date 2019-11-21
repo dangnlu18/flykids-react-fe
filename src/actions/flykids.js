@@ -13,7 +13,7 @@ export function getTrips(){
 		api().get('/trips')
 			.then((resp)=>{
 				console.log(resp)
-				dispatch({type:FETCH_TRIPS_SUCCESS, payload: resp})
+				dispatch({type:FETCH_TRIPS_SUCCESS, payload: resp.data})
 			})
 			.catch((err)=>console.log(err))
 	}

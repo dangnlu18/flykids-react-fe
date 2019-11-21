@@ -2,13 +2,7 @@ import { FETCH_TRIPS, FETCH_TRIPS_SUCCESS, FETCH_TRIPS_ERROR } from '../actions/
 
 
 const initialState = {
-	trips:[{
-		airport:'',
-		airline:'',
-		departure_time:'',
-		kids:0,
-		is_arriving:0
-	}],
+	trips:[],
 	user: {
 		first_name:'',
 		last_name:'',
@@ -32,7 +26,7 @@ export function reducer(state=initialState, action){
 		case FETCH_TRIPS_SUCCESS:
 			return{
 				...state,
-				trips: action.payload,
+				trips: [...action.payload],
 				isLoading: false
 			}
 		case FETCH_TRIPS_ERROR:
